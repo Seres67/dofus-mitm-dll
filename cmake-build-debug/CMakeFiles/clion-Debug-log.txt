@@ -1,0 +1,18 @@
+"C:\Program Files\JetBrains\CLion 2024.1.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.1.1/bin/ninja/win/x64/ninja.exe" -DCMAKE_TOOLCHAIN_FILE=C:\Users\lou\Documents\vcpkg\scripts\buildsystems\vcpkg.cmake -G Ninja -S C:\Users\lou\CLionProjects\dofus_test -B C:\Users\lou\CLionProjects\dofus_test\cmake-build-debug
+-- Running vcpkg install
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/Hostx64/x64/cl.exe
+All requested packages are currently installed.
+Total install time: 900 ns
+detours can be used from CMake via:
+
+    find_path(DETOURS_INCLUDE_DIRS "detours/detours.h")
+    find_library(DETOURS_LIBRARY detours REQUIRED)
+
+    target_include_directories(main PRIVATE ${DETOURS_INCLUDE_DIRS})
+    target_link_libraries(main PRIVATE ${DETOURS_LIBRARY})
+
+-- Running vcpkg install - done
+-- Configuring done (1.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/lou/CLionProjects/dofus_test/cmake-build-debug

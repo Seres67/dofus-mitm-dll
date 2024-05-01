@@ -1,0 +1,3 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles\injector.dir\injector\src\main.cpp.obj: dyndep
+

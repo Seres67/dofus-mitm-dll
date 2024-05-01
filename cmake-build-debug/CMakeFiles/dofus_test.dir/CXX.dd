@@ -1,0 +1,27 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles\dofus_test.dir\dll\src\main.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\HookEngine.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\ChatMessagePacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\PlayerInventoryPacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\MapMovementPacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\BasicPongPacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\BasicAckPacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\NoMovementPacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\MultiTabStoragePacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\MapFightCountPacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\GameContextRemoveElementPacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\UnknownPacket.cpp.obj: dyndep
+
+build CMakeFiles\dofus_test.dir\dll\src\BasicPingPacket.cpp.obj: dyndep
+
