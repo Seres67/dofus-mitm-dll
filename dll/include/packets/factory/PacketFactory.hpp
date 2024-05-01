@@ -19,6 +19,7 @@
 #include "packets/impl/MapFightCountPacket.hpp"
 #include "packets/impl/MultiTabStoragePacket.hpp"
 #include "packets/impl/UnknownPacket.hpp"
+#include "packets/impl/ContainerInventoryPacket.hpp"
 
 class PacketFactory {
 public:
@@ -34,6 +35,8 @@ public:
                 return std::unique_ptr<IPacket>(new ChatMessagePacket(buffer));
             case PacketIds::PlayerInventory:
                 return std::unique_ptr<IPacket>(new PlayerInventoryPacket(buffer));
+            case PacketIds::ContainerInventory:
+                return std::unique_ptr<IPacket>(new ContainerInventoryPacket(buffer));
             case PacketIds::Ping:
                 return std::unique_ptr<IPacket>(new BasicPingPacket(buffer));
             case PacketIds::BasicAck:

@@ -5,9 +5,11 @@
 #ifndef DOFUS_TEST_PLAYERINVENTORYPACKET_HPP
 #define DOFUS_TEST_PLAYERINVENTORYPACKET_HPP
 
+#include <vector>
 #include <ostream>
 #include <cstdint>
 #include "packets/APacket.hpp"
+#include "ObjectItem.hpp"
 
 class PlayerInventoryPacket : virtual public APacket {
 public:
@@ -22,6 +24,7 @@ public:
 private:
     uint16_t m_packet_id = 8307;
     uint16_t m_inventory_size;
+    std::vector<ObjectItem> m_inventory_content;
 };
 
 

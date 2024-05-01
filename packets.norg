@@ -7,30 +7,6 @@ x bytes size
 2 bytes content size
 x bytes content
 
-channel pos: 3
-message_size size: 1
-message size pos: 6
-message pos: 7
-timestamp pos: 11
-fingerprint size: 2164
-fingerprint size pos: 14
-fingerprint pos: 2178
-sender id pos: 2186
-sender name size pos: 2189
-sender name pos: 19853
-pos: 19855
-
-channel pos: 4
-message size: 1
-message size pos: 6
-message start pos: 7
-message end pos: 8
-timestamp pos: 12
-high: 8, low: 103
-fingerprint size: 2151
-fingerprint size pos: 15
-fingerprint pos: 2166
-sender id pos: 2174
-sender name size pos: 2177
-sender name pos: 2177
-pos: 2179
+// 8307 & 1606
+2 bytes nb of objects
+x Object{short pos, varUInt GID, short nb of effects, x Effect{short id, varUShort  effect data}, varUInt UID, varUInt quantity, bool favorite}
