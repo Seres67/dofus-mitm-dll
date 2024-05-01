@@ -7,11 +7,15 @@
 
 #include <ostream>
 #include <cstdint>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class PlayerInventoryPacket : public APacket {
+class PlayerInventoryPacket : virtual public APacket {
 public:
     explicit PlayerInventoryPacket(const char *packet);
+
+    ~PlayerInventoryPacket() override = default;
+
+    std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const PlayerInventoryPacket &packet);
 

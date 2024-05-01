@@ -6,11 +6,15 @@
 #define DOFUS_TEST_NOMOVEMENTPACKET_HPP
 
 #include <ostream>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class NoMovementPacket : public APacket {
+class NoMovementPacket : virtual public APacket {
 public:
     explicit NoMovementPacket(const char *packet);
+
+    ~NoMovementPacket() override = default;
+
+    std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const NoMovementPacket &packet);
 

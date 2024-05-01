@@ -6,17 +6,18 @@
 #define DOFUS_TEST_UNKNOWNPACKET_HPP
 
 #include <ostream>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class UnknownPacket : public APacket {
+class UnknownPacket : virtual public APacket {
 public:
-    UnknownPacket(const char *packet, std::size_t len);
+    UnknownPacket(const char *packet);
 
+    ~UnknownPacket() override = default;
+
+    std::string dump() const override;
     friend std::ostream &operator<<(std::ostream &os, const UnknownPacket &packet);
 
 private:
-    uint16_t m_packet_id = 0;
-    std::string m_data;
 };
 
 #endif //DOFUS_TEST_UNKNOWNPACKET_HPP

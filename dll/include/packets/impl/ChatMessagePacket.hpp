@@ -8,13 +8,17 @@
 
 #include <cstdint>
 #include <ostream>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class ChatMessagePacket : public APacket {
+class ChatMessagePacket : virtual public APacket {
 public:
     explicit ChatMessagePacket(const char *packet);
 
+    ~ChatMessagePacket() override = default;
+
     friend std::ostream &operator<<(std::ostream &os, const ChatMessagePacket &packet);
+
+    std::string dump() const override;
 
 private:
     uint16_t m_packet_id = 1304;

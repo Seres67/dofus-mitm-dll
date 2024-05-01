@@ -7,11 +7,15 @@
 
 
 #include <ostream>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class BasicAckPacket : public APacket {
+class BasicAckPacket : virtual public APacket {
 public:
     explicit BasicAckPacket(const char *packet);
+
+    ~BasicAckPacket() override = default;
+
+    std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const BasicAckPacket &packet);
 

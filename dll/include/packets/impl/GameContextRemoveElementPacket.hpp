@@ -6,11 +6,15 @@
 #define DOFUS_TEST_GAMECONTEXTREMOVEELEMENTPACKET_HPP
 
 #include <ostream>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class GameContextRemoveElementPacket : public APacket {
+class GameContextRemoveElementPacket : virtual public APacket {
 public:
     explicit GameContextRemoveElementPacket(const char *packet);
+
+    ~GameContextRemoveElementPacket() override = default;
+
+    std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const GameContextRemoveElementPacket &packet);
 

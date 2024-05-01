@@ -6,11 +6,15 @@
 #define DOFUS_TEST_MAPFIGHTCOUNTPACKET_HPP
 
 #include <ostream>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class MapFightCountPacket : public APacket {
+class MapFightCountPacket : virtual public APacket {
 public:
     explicit MapFightCountPacket(const char *packet);
+
+    ~MapFightCountPacket() override = default;
+
+    std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const MapFightCountPacket &packet);
 

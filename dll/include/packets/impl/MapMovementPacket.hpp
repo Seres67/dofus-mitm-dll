@@ -8,11 +8,15 @@
 
 #include <ostream>
 #include <vector>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class MapMovementPacket  : public APacket {
+class MapMovementPacket  : virtual public APacket {
 public:
     explicit MapMovementPacket(const char *packet);
+
+    ~MapMovementPacket() override = default;
+
+    std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const MapMovementPacket &packet);
 

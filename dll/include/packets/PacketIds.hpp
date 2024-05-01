@@ -10,6 +10,7 @@ enum class PacketIds {
     MapMovement = 4955,
     ChatMessage = 1304,
     PlayerInventory = 8307,
+    Ping = 8285,
     Pong = 5906,
     BasicAck = 4642,
     GameContextRemoveElement = 1463,

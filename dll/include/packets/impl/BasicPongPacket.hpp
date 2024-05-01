@@ -6,11 +6,15 @@
 #define DOFUS_TEST_BASICPONGPACKET_HPP
 
 #include <ostream>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class BasicPongPacket : public APacket {
+class BasicPongPacket : virtual public APacket {
 public:
     explicit BasicPongPacket(const char *packet);
+
+    ~BasicPongPacket() override = default;
+
+    std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const BasicPongPacket &packet);
 

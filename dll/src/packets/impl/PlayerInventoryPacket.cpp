@@ -2,7 +2,8 @@
 // Created by lou on 01/05/2024.
 //
 
-#include "PlayerInventoryPacket.hpp"
+#include <string>
+#include "packets/impl/PlayerInventoryPacket.hpp"
 
 PlayerInventoryPacket::PlayerInventoryPacket(const char *packet) : APacket(packet) {
     m_inventory_size = (uint8_t) packet[m_pos] << 8 | (uint8_t) packet[m_pos + 1];
@@ -11,4 +12,11 @@ PlayerInventoryPacket::PlayerInventoryPacket(const char *packet) : APacket(packe
 
 std::ostream &operator<<(std::ostream &os, const PlayerInventoryPacket &packet) {
     return os << "PlayerInventoryPacket{size: " << packet.m_inventory_size << "}";
+}
+
+std::string PlayerInventoryPacket::dump() const {
+    return std::string(
+            "PlayerInventoryPacket{id: " + std::to_string(m_packet_id) + "; len: " + std::to_string(getLength()) + "; inv_size: " +
+            std::to_string(m_inventory_size) +
+            "}");
 }

@@ -6,11 +6,15 @@
 #define DOFUS_TEST_BASICPINGPACKET_HPP
 
 #include <ostream>
-#include "APacket.hpp"
+#include "packets/APacket.hpp"
 
-class BasicPingPacket : public APacket {
+class BasicPingPacket : virtual public APacket {
 public:
     explicit BasicPingPacket(const char *packet);
+
+    ~BasicPingPacket() override = default;
+
+    std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const BasicPingPacket &packet);
 

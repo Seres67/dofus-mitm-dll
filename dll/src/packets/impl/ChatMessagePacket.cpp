@@ -3,7 +3,8 @@
 //
 
 #include <iostream>
-#include "../include/ChatMessagePacket.hpp"
+#include <string>
+#include "packets/impl/ChatMessagePacket.hpp"
 
 ChatMessagePacket::ChatMessagePacket(const char *packet) : APacket(packet) {
     m_channel = packet[m_pos++];
@@ -53,4 +54,8 @@ ChatMessagePacket::ChatMessagePacket(const char *packet) : APacket(packet) {
 std::ostream &operator<<(std::ostream &os, const ChatMessagePacket &packet) {
     return os << "ChatMessagePacket{sender: " << packet.m_sender_name << "; message: " << packet.m_message_content
               << "}";
+}
+
+std::string ChatMessagePacket::dump() const {
+    return std::string("ChatMessagePacket{sender: " + m_sender_name + "; message: " + m_message_content + "}");
 }

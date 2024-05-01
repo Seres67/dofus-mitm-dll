@@ -18,7 +18,8 @@ public:
 
     bool Unhook(std::string_view moduleName, std::string_view functionName);
     bool Unhook(FncPtr originalAddress, HookFncPtr hookAddress) const;
-    bool IsHooked(std::string_view moduleName, std::string_view functionName) const;
+
+    [[nodiscard]] bool IsHooked(std::string_view moduleName, std::string_view functionName) const;
 
     static FncPtr GetOriginalAddressFromHook(HookFncPtr hookAddress);
 private:

@@ -94,7 +94,7 @@ bool HookEngine::Unhook(std::string_view moduleName, std::string_view functionNa
     std::erase_if(m_hookedFunctions[moduleNameStr], [=](const auto& elem) {
         return elem.first == functionName;
     });
-    if (m_hookedFunctions[moduleNameStr].size() == 0) {
+    if (m_hookedFunctions[moduleNameStr].empty()) {
         m_hookedFunctions.erase(moduleNameStr);
     }
 
