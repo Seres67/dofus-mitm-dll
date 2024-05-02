@@ -948,6 +948,7 @@ void PacketNames::setup_map() {
     m_packet_names[4801] = "TitleSelectErrorMessage";
     m_packet_names[7093] = "TitleSelectRequestMessage";
     m_packet_names[2590] = "ClientUIOpenedMessage";
+    m_packet_names[9922] = "ProtocolRequired";
     m_packet_names[3680] = "LoginQueueStatusMessage";
     m_packet_names[1695] = "QueueStatusMessage";
     m_packet_names[6032] = "ReportRequestMessage";

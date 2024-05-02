@@ -11,7 +11,7 @@
 
 class IPacket {
 public:
-    virtual ~IPacket()= default;
+    virtual ~IPacket() = default;
 
     [[nodiscard]] virtual uint16_t getPacketId() const = 0;
 
@@ -24,6 +24,8 @@ public:
     [[nodiscard]] virtual std::string dump() const = 0;
 
     [[nodiscard]] virtual uint16_t getHeader() const = 0;
+
+    [[nodiscard]] virtual uint32_t getMaxLength() const = 0;
 };
 
 

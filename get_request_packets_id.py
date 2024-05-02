@@ -3,7 +3,7 @@ import argparse
 
 def list_all_files(path):
     import glob
-    return glob.glob(path + "/**/*Message.as", recursive=True)
+    return glob.glob(path + "/**/*.as", recursive=True)
 
 
 def read_file(path):

@@ -54,6 +54,10 @@ public:
     [[nodiscard]] uint16_t getHeader() const override {
         return m_header;
     }
+
+    uint32_t getMaxLength() const override {
+        return UINT32_MAX;
+    }
 protected:
     uint16_t m_header = 0;
     uint16_t m_packet_id = 0;
