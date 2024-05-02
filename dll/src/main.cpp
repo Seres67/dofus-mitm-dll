@@ -52,7 +52,7 @@ int WSAAPI sendHook(SOCKET socket, const char *buffer, int length, int flags) {
     if (length != 65536) {
         std::unique_ptr<IPacket> packet = PacketFactory::make_packet(buffer);
 //        std::cout << "sending " << length << " bytes, header: " << packet->getHeader() << ", id: " << packet->getPacketId() << std::endl;
-        std::string packet_dump = packet->dump(true);
+        std::string packet_dump = packet->dump();
         std::cout << "sending: " << packet_dump << std::endl;
     } else {
         uint32_t pos = 0;
@@ -80,7 +80,7 @@ int WSAAPI sendHook(SOCKET socket, const char *buffer, int length, int flags) {
             }
             if (looks_valid) {
                 std::unique_ptr<IPacket> packet = PacketFactory::make_packet(&buffer[pos]);
-                std::string packet_dump = packet->dump(true);
+                std::string packet_dump = packet->dump();
                 if (!packet_dump.empty())
                     std::cout << "sending: " << packet_dump << std::endl;
             }
@@ -95,7 +95,7 @@ int WSAAPI recvHook(SOCKET socket, char *buffer, int length, int flags) {
         return PassthroughHook<int, recvFnc>(recvHook, socket, buffer, length, flags);
     if (length != 65536) {
         std::unique_ptr<IPacket> packet = PacketFactory::make_packet(buffer);
-        std::string packet_dump = packet->dump(false);
+        std::string packet_dump = packet->dump();
         if (!packet_dump.empty())
             std::cout << "receiving: " << packet_dump << std::endl;
     } else {
@@ -124,7 +124,7 @@ int WSAAPI recvHook(SOCKET socket, char *buffer, int length, int flags) {
             }
             if (looks_valid) {
                 std::unique_ptr<IPacket> packet = PacketFactory::make_packet(&buffer[pos]);
-                std::string packet_dump = packet->dump(false);
+                std::string packet_dump = packet->dump();
                 if (!packet_dump.empty())
                     std::cout << "receiving: " << packet_dump << std::endl;
             }
