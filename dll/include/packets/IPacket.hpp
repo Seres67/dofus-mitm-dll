@@ -22,6 +22,8 @@ public:
     virtual uint64_t getPos() const = 0;
 
     virtual std::string dump() const = 0;
+
+    virtual uint16_t getHeader() const = 0;
 };
 
 

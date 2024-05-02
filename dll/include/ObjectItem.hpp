@@ -13,6 +13,7 @@
 class ObjectItem {
 public:
     explicit ObjectItem(const char *buffer, std::size_t &pos);
+    std::string dump() const;
 private:
     uint16_t m_position;
     uint32_t m_gid;

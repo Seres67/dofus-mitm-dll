@@ -51,6 +51,9 @@ public:
         return "APacket{}";
     }
 
+    uint16_t getHeader() const override {
+        return m_header;
+    }
 protected:
     uint16_t m_header = 0;
     uint16_t m_packet_id = 0;

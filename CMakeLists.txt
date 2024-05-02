@@ -21,14 +21,12 @@ add_library(dofus_test SHARED dll/src/main.cpp
         dll/src/packets/impl/GameContextRemoveElementPacket.cpp
         dll/src/packets/impl/UnknownPacket.cpp
         dll/src/packets/impl/BasicPingPacket.cpp
-        dll/include/packets/IPacket.hpp
         dll/src/ObjectItem.cpp
-        dll/include/ObjectItem.hpp
         dll/src/Utils.cpp
-        dll/include/Utils.hpp
         dll/src/ObjectEffect.cpp
-        dll/include/ObjectEffect.hpp
         dll/src/packets/impl/ContainerInventoryPacket.cpp
+        dll/src/packets/ReceivedPacketNames.cpp
+        dll/src/packets/SentPacketNames.cpp
 )
 target_link_libraries(dofus_test PRIVATE ${DETOURS_LIBRARY})
 target_include_directories(dofus_test PRIVATE "dll/include" ${DETOURS_INCLUDE_DIRS})

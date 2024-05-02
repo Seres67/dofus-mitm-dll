@@ -7,11 +7,13 @@
 #include "packets/impl/PlayerInventoryPacket.hpp"
 
 PlayerInventoryPacket::PlayerInventoryPacket(const char *packet) : APacket(packet) {
-    std::cout <<"header: " << m_header << std::endl;
     m_inventory_size = (uint8_t) packet[m_pos] << 8 | (uint8_t) packet[m_pos + 1];
     m_pos += 2;
     for (int i =0; i < m_inventory_size; ++i) {
         m_inventory_content.emplace_back(packet, m_pos);
+    }
+    for (auto && obj : m_inventory_content) {
+        std::cout << obj.dump() << std::endl;
     }
 }
 
