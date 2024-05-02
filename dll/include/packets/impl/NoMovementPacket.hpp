@@ -6,9 +6,9 @@
 #define DOFUS_TEST_NOMOVEMENTPACKET_HPP
 
 #include <ostream>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class NoMovementPacket : virtual public APacket {
+class NoMovementPacket : virtual public AReceivedPacket {
 public:
     explicit NoMovementPacket(const char *packet);
 

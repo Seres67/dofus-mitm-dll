@@ -8,9 +8,9 @@
 
 #include <ostream>
 #include <vector>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class MapMovementPacket  : virtual public APacket {
+class MapMovementPacket  : virtual public AReceivedPacket {
 public:
     explicit MapMovementPacket(const char *packet);
 

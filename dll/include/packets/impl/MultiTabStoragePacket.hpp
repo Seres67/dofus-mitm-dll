@@ -6,9 +6,9 @@
 #define DOFUS_TEST_MULTITABSTORAGEPACKET_HPP
 
 #include <ostream>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class MultiTabStoragePacket : virtual public APacket {
+class MultiTabStoragePacket : virtual public AReceivedPacket {
 public:
     explicit MultiTabStoragePacket(const char *packet);
 

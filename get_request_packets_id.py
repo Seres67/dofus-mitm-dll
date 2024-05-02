@@ -3,7 +3,7 @@ import argparse
 
 def list_all_files(path):
     import glob
-    return glob.glob(path + "/**/*RequestMessage.as", recursive=True)
+    return glob.glob(path + "/**/*Message.as", recursive=True)
 
 
 def read_file(path):
@@ -24,7 +24,11 @@ def find_packet_id(file_buffer):
     pos = file_buffer.find("protocolId:uint = ")
     packet_id = file_buffer[pos + 18:pos + 22]
     if packet_id[3] == ';':
-        packet_id = packet_id[:-1]
+        packet_id = packet_id[0:3]
+    if packet_id[2] == ';':
+        packet_id = packet_id[0:2]
+    if packet_id[1] == ';':
+        packet_id = packet_id[0:1]
     return packet_id
 
 
@@ -39,7 +43,7 @@ def loop(path):
     return 0
 
 
-parser = argparse.ArgumentParser(prog='get_request_packets_id.py', description='Extracts packet requests ids')
+parser = argparse.ArgumentParser(prog='get_packets_id.py', description='Extracts packets ids')
 parser.add_argument('path_to_dofus_scripts')
 args = parser.parse_args()
 loop(args.path_to_dofus_scripts)

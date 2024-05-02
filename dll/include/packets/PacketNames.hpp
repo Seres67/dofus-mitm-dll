@@ -2,14 +2,14 @@
 // Created by lou on 02/05/2024.
 //
 
-#ifndef DOFUS_TEST_RECEIVEDPACKETNAMES_HPP
-#define DOFUS_TEST_RECEIVEDPACKETNAMES_HPP
+#ifndef DOFUS_TEST_PACKETNAMES_HPP
+#define DOFUS_TEST_PACKETNAMES_HPP
 
 
 #include <unordered_map>
 #include <string>
 
-class ReceivedPacketNames {
+class PacketNames {
 public:
     static void setup_map();
     static std::string get_packet_name(uint16_t packet_id);
@@ -19,4 +19,4 @@ private:
 };
 
 
-#endif //DOFUS_TEST_RECEIVEDPACKETNAMES_HPP
+#endif //DOFUS_TEST_PACKETNAMES_HPP

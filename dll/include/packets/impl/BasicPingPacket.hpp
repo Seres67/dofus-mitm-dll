@@ -6,9 +6,9 @@
 #define DOFUS_TEST_BASICPINGPACKET_HPP
 
 #include <ostream>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class BasicPingPacket : virtual public APacket {
+class BasicPingPacket : virtual public AReceivedPacket {
 public:
     explicit BasicPingPacket(const char *packet);
 

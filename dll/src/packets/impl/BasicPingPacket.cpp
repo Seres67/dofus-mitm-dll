@@ -4,7 +4,7 @@
 #include <string>
 #include "packets/impl/BasicPingPacket.hpp"
 
-BasicPingPacket::BasicPingPacket(const char *packet) : APacket(packet) {
+BasicPingPacket::BasicPingPacket(const char *packet) : AReceivedPacket(packet) {
     m_quiet = packet[m_pos];
 }
 

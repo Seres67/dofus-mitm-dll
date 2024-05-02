@@ -5,7 +5,7 @@
 #include <string>
 #include "packets/impl/BasicPongPacket.hpp"
 
-BasicPongPacket::BasicPongPacket(const char *packet) : APacket(packet) {
+BasicPongPacket::BasicPongPacket(const char *packet) : AReceivedPacket(packet) {
     m_quiet = packet[m_pos];
 }
 

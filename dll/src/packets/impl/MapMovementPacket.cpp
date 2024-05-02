@@ -5,7 +5,7 @@
 #include <string>
 #include "packets/impl/MapMovementPacket.hpp"
 
-MapMovementPacket::MapMovementPacket(const char *packet) : APacket(packet) {
+MapMovementPacket::MapMovementPacket(const char *packet) : AReceivedPacket(packet) {
     m_movement_size = (uint8_t) packet[m_pos] << 8 | (uint8_t) packet[m_pos + 1];
     m_pos += 2;
     for (int i = 0; i < m_movement_size; ++i) {

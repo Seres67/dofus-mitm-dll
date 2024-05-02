@@ -25,8 +25,8 @@ add_library(dofus_test SHARED dll/src/main.cpp
         dll/src/Utils.cpp
         dll/src/ObjectEffect.cpp
         dll/src/packets/impl/ContainerInventoryPacket.cpp
-        dll/src/packets/ReceivedPacketNames.cpp
-        dll/src/packets/SentPacketNames.cpp
+        dll/src/packets/PacketNames.cpp
+        dll/src/packets/impl/ExchangeBidHouseSearchMessage.cpp
 )
 target_link_libraries(dofus_test PRIVATE ${DETOURS_LIBRARY})
 target_include_directories(dofus_test PRIVATE "dll/include" ${DETOURS_INCLUDE_DIRS})

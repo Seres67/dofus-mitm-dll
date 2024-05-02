@@ -6,7 +6,7 @@
 #include <string>
 #include "packets/impl/ChatMessagePacket.hpp"
 
-ChatMessagePacket::ChatMessagePacket(const char *packet) : APacket(packet) {
+ChatMessagePacket::ChatMessagePacket(const char *packet) : AReceivedPacket(packet) {
     m_channel = packet[m_pos++];
     m_message_size =
             (uint8_t) packet[m_pos] << 8 | (uint8_t) packet[m_pos + 1];

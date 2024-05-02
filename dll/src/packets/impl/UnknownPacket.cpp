@@ -4,10 +4,9 @@
 #include <iostream>
 #include <string>
 #include "packets/impl/UnknownPacket.hpp"
-#include "packets/ReceivedPacketNames.hpp"
-#include "packets/SentPacketNames.hpp"
+#include "packets/PacketNames.hpp"
 
-UnknownPacket::UnknownPacket(const char *packet) : APacket(packet) {
+UnknownPacket::UnknownPacket(const char *packet) : AReceivedPacket(packet) {
 //    m_data = std::string(packet, packet + len);
 }
 
@@ -16,13 +15,9 @@ std::ostream &operator<<(std::ostream &os, const UnknownPacket &packet) {
 }
 
 std::string UnknownPacket::dump() const {
-    std::string r_packet_name = ReceivedPacketNames::get_packet_name(m_packet_id);
-    std::string s_packet_name = SentPacketNames::get_packet_name(m_packet_id);
-    if (!r_packet_name.empty())
-        return std::string(r_packet_name + "{id: " + std::to_string(m_packet_id) + "; len: " +
-                           std::to_string(getLength()) + "}");
-    else if (!s_packet_name.empty())
-        return std::string(s_packet_name + "{id: " + std::to_string(m_packet_id) + "; len: " +
+    std::string packet_name = PacketNames::get_packet_name(m_packet_id);
+    if (!packet_name.empty())
+        return std::string(packet_name + "{header: " + std::to_string(m_header) + "; id: " + std::to_string(m_packet_id) + "; len: " +
                            std::to_string(getLength()) + "}");
     else
         return "";

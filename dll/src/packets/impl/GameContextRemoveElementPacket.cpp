@@ -4,7 +4,7 @@
 #include <string>
 #include "packets/impl/GameContextRemoveElementPacket.hpp"
 
-GameContextRemoveElementPacket::GameContextRemoveElementPacket(const char *packet) : APacket(packet) {
+GameContextRemoveElementPacket::GameContextRemoveElementPacket(const char *packet) : AReceivedPacket(packet) {
 
 }
 

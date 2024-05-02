@@ -18,6 +18,7 @@ enum class PacketIds {
     MapNoMovement = 6782,
     MapFightCount = 213,
     MultiTabStorage = 3530,
+    ExchangeBidHouseSearch = 8231,
 };
 
 

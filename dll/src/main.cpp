@@ -8,8 +8,7 @@
 #include "packets/impl/ChatMessagePacket.hpp"
 #include "packets/impl/UnknownPacket.hpp"
 #include "packets/factory/PacketFactory.hpp"
-#include "packets/ReceivedPacketNames.hpp"
-#include "packets/SentPacketNames.hpp"
+#include "packets/PacketNames.hpp"
 
 std::ofstream log_file;
 
@@ -33,7 +32,7 @@ int WSAAPI sendHook(SOCKET socket, const char *buffer, int length, int flags) {
         std::string packet_dump = packet->dump();
         if (!packet_dump.empty()) {
             std::cout << "sending: " << packet_dump << std::endl;
-            std::cout << "receiving: " << packet_dump << std::endl;
+            log_file << "sending: " << packet_dump << std::endl;
         }
     } else {
         uint32_t pos = 0;
@@ -63,8 +62,8 @@ int WSAAPI sendHook(SOCKET socket, const char *buffer, int length, int flags) {
                 std::unique_ptr<IPacket> packet = PacketFactory::make_packet(&buffer[pos]);
                 std::string packet_dump = packet->dump();
                 if (!packet_dump.empty()) {
-                    log_file << "receiving: " << packet_dump << std::endl;
-                    std::cout << "receiving: " << packet_dump << std::endl;
+                    log_file << "sending: " << packet_dump << std::endl;
+                    std::cout << "sending: " << packet_dump << std::endl;
                 }
             }
             pos = t_pos;
@@ -127,8 +126,7 @@ WINAPI DllMain(HINSTANCE hModule, DWORD dwReason, [[maybe_unused]] LPVOID reserv
 
     if (dwReason == DLL_PROCESS_ATTACH) {
         log_file.open("./log.txt", std::ios_base::binary);
-        ReceivedPacketNames::setup_map();
-        SentPacketNames::setup_map();
+        PacketNames::setup_map();
         DisableThreadLibraryCalls(hModule);
         if (AllocConsole()) {
             freopen_s((FILE **) stdout, "CONOUT$", "w", stdout);

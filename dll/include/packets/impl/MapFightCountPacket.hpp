@@ -6,9 +6,9 @@
 #define DOFUS_TEST_MAPFIGHTCOUNTPACKET_HPP
 
 #include <ostream>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class MapFightCountPacket : virtual public APacket {
+class MapFightCountPacket : virtual public AReceivedPacket {
 public:
     explicit MapFightCountPacket(const char *packet);
 

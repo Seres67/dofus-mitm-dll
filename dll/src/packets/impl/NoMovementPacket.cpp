@@ -4,7 +4,7 @@
 #include <string>
 #include "packets/impl/NoMovementPacket.hpp"
 
-NoMovementPacket::NoMovementPacket(const char *packet) : APacket(packet) {
+NoMovementPacket::NoMovementPacket(const char *packet) : AReceivedPacket(packet) {
 
 }
 

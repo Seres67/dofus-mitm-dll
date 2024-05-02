@@ -5,7 +5,7 @@
 #include <string>
 #include "packets/impl/BasicAckPacket.hpp"
 
-BasicAckPacket::BasicAckPacket(const char *packet) : APacket(packet) {
+BasicAckPacket::BasicAckPacket(const char *packet) : AReceivedPacket(packet) {
 
 }
 

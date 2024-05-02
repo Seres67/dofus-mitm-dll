@@ -4,7 +4,7 @@
 #include <string>
 #include "packets/impl/MapFightCountPacket.hpp"
 
-MapFightCountPacket::MapFightCountPacket(const char *packet) : APacket(packet) {
+MapFightCountPacket::MapFightCountPacket(const char *packet) : AReceivedPacket(packet) {
 
 }
 

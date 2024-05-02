@@ -4,7 +4,7 @@
 #include <string>
 #include "packets/impl/MultiTabStoragePacket.hpp"
 
-MultiTabStoragePacket::MultiTabStoragePacket(const char *packet) : APacket(packet) {
+MultiTabStoragePacket::MultiTabStoragePacket(const char *packet) : AReceivedPacket(packet) {
 
 }
 

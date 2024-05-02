@@ -8,10 +8,10 @@
 #include <vector>
 #include <ostream>
 #include <cstdint>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 #include "ObjectItem.hpp"
 
-class PlayerInventoryPacket : virtual public APacket {
+class PlayerInventoryPacket : virtual public AReceivedPacket {
 public:
     explicit PlayerInventoryPacket(const char *packet);
 

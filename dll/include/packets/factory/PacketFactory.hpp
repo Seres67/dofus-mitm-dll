@@ -7,7 +7,7 @@
 
 
 #include <memory>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 #include "packets/impl/MapMovementPacket.hpp"
 #include "packets/impl/BasicPongPacket.hpp"
 #include "packets/impl/ChatMessagePacket.hpp"
@@ -20,6 +20,7 @@
 #include "packets/impl/MultiTabStoragePacket.hpp"
 #include "packets/impl/UnknownPacket.hpp"
 #include "packets/impl/ContainerInventoryPacket.hpp"
+#include "packets/impl/ExchangeBidHouseSearchMessage.hpp"
 
 class PacketFactory {
 public:
@@ -49,6 +50,8 @@ public:
                 return std::unique_ptr<IPacket>(new MapFightCountPacket(buffer));
             case PacketIds::MultiTabStorage:
                 return std::unique_ptr<IPacket>(new MultiTabStoragePacket(buffer));
+            case PacketIds::ExchangeBidHouseSearch:
+                return std::unique_ptr<IPacket>(new ExchangeBidHouseSearchMessage(buffer));
             default:
                 return std::unique_ptr<IPacket>(new UnknownPacket(buffer));
         }

@@ -2,17 +2,17 @@
 // Created by lou on 30/04/2024.
 //
 
-#ifndef DOFUS_TEST_APACKET_HPP
-#define DOFUS_TEST_APACKET_HPP
+#ifndef DOFUS_TEST_ARECEIVEDPACKET_HPP
+#define DOFUS_TEST_ARECEIVEDPACKET_HPP
 
 #include <cstdint>
 #include <ostream>
 #include "PacketIds.hpp"
 #include "IPacket.hpp"
 
-class APacket : virtual public IPacket {
+class AReceivedPacket : virtual public IPacket {
 public:
-    explicit APacket(const char *packet) {
+    explicit AReceivedPacket(const char *packet) {
         m_header = (uint8_t) packet[m_pos] << 8 | (uint8_t) packet[m_pos + 1];
         m_packet_id = m_header >> 2;
         m_length_type = m_header & 3;
@@ -29,7 +29,7 @@ public:
         }
     }
 
-    ~APacket() override = default;
+    ~AReceivedPacket() override = default;
 
     [[nodiscard]] uint16_t getPacketId() const override {
         return m_packet_id;
@@ -48,7 +48,7 @@ public:
     }
 
     [[nodiscard]] std::string dump() const override {
-        return "APacket{}";
+        return "AReceivedPacket{}";
     }
 
     [[nodiscard]] uint16_t getHeader() const override {
@@ -63,4 +63,4 @@ protected:
 };
 
 
-#endif //DOFUS_TEST_APACKET_HPP
+#endif //DOFUS_TEST_ARECEIVEDPACKET_HPP

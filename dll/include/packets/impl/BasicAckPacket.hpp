@@ -7,9 +7,9 @@
 
 
 #include <ostream>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class BasicAckPacket : virtual public APacket {
+class BasicAckPacket : virtual public AReceivedPacket {
 public:
     explicit BasicAckPacket(const char *packet);
 

@@ -6,9 +6,9 @@
 #define DOFUS_TEST_GAMECONTEXTREMOVEELEMENTPACKET_HPP
 
 #include <ostream>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class GameContextRemoveElementPacket : virtual public APacket {
+class GameContextRemoveElementPacket : virtual public AReceivedPacket {
 public:
     explicit GameContextRemoveElementPacket(const char *packet);
 

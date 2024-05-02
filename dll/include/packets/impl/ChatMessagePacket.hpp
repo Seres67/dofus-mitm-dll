@@ -8,9 +8,9 @@
 
 #include <cstdint>
 #include <ostream>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class ChatMessagePacket : virtual public APacket {
+class ChatMessagePacket : virtual public AReceivedPacket {
 public:
     explicit ChatMessagePacket(const char *packet);
 

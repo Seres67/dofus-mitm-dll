@@ -3,7 +3,7 @@
 //
 #include "packets/impl/ContainerInventoryPacket.hpp"
 
-ContainerInventoryPacket::ContainerInventoryPacket(const char *packet) : APacket(packet),PlayerInventoryPacket(packet) {
+ContainerInventoryPacket::ContainerInventoryPacket(const char *packet) : AReceivedPacket(packet), PlayerInventoryPacket(packet) {
 
 }
 

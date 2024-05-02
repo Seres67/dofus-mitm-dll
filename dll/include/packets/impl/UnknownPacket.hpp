@@ -6,9 +6,9 @@
 #define DOFUS_TEST_UNKNOWNPACKET_HPP
 
 #include <ostream>
-#include "packets/APacket.hpp"
+#include "packets/AReceivedPacket.hpp"
 
-class UnknownPacket : virtual public APacket {
+class UnknownPacket : virtual public AReceivedPacket {
 public:
     explicit UnknownPacket(const char *packet);
 
