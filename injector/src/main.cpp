@@ -15,47 +15,43 @@ HANDLE retrieveProcessId(char *processName) {
     return hProcess;
 }
 
-int main(int argc, char *argv[]) {
-    char *dllPath = _strdup(R"(C:\Users\lou\CLionProjects\dofus_test\cmake-build-debug\dofus_test.dll)");
-
+int main(int ac, char *av[]) {
+    if (ac != 2) {
+        std::cout << "run with full path to dll." << std::endl;
+        return 0;
+    }
+    char *dllPath = _strdup(av[1]);
     char* processName = _strdup("Dofus.exe");
     void* pLoadLibrary = (void*)GetProcAddress(GetModuleHandle("kernel32"),"LoadLibraryA");
-    HANDLE hProcess = nullptr;
+    HANDLE hProcess;
     STARTUPINFOA startupInfo;
     ZeroMemory(&startupInfo,sizeof(startupInfo));
-
     std::cout << "Getting process ID of process \"" << processName << "\"...\n";
     if(!(hProcess = retrieveProcessId(processName))) {
         std::cout << "Process ID unknown. GetLastError() = " << GetLastError();
         return 0;
     }
-
     std::cout << "Allocating virtual memory...\n";
     void* pReservedSpace = VirtualAllocEx(hProcess,nullptr,strlen(dllPath),MEM_COMMIT,PAGE_EXECUTE_READWRITE);
     if(!pReservedSpace) {
         std::cout << "Could not allocate virtual memory. GetLastError() = " << GetLastError();
         return 0;
     }
-
     std::cout << "Writing process memory...\n";
     if(!WriteProcessMemory(hProcess,pReservedSpace,dllPath,strlen(dllPath),nullptr)) {
         std::cout << "Error while calling WriteProcessMemory(). GetLastError() = " << GetLastError();
         return 0;
     }
-
     std::cout << "Creating remote thread...\n";
     HANDLE hThread = CreateRemoteThread(hProcess,nullptr,0,(LPTHREAD_START_ROUTINE)pLoadLibrary,pReservedSpace,0,nullptr);
     if(!hThread) {
         std::cout << "Unable to create the remote thread. GetLastError() = " << GetLastError();
         return 0;
     }
-
     std::cout << "Thread created.\n";
-
     WaitForSingleObject(hThread,INFINITE);
     VirtualFreeEx(hProcess,pReservedSpace,strlen(dllPath),MEM_COMMIT);
     CloseHandle(hProcess);
-
     std::cout << "Done.";
     return 0;
 }

@@ -25,6 +25,5 @@ std::string UnknownPacket::dump() const {
         return std::string(s_packet_name + "{id: " + std::to_string(m_packet_id) + "; len: " +
                            std::to_string(getLength()) + "}");
     else
-        return std::string("UnknownPacket{id: " + std::to_string(m_packet_id) + "; len: " +
-                           std::to_string(getLength()) + "}");
+        return "";
 }

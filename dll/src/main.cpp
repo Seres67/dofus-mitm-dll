@@ -1,35 +1,16 @@
 #include <WinSock2.h>
-
 #include <iostream>
 #include <string>
 #include <algorithm>
 #include <sstream>
 #include <fstream>
-#include <iomanip>
 #include "HookEngine.h"
 #include "packets/impl/ChatMessagePacket.hpp"
-#include "packets/impl/PlayerInventoryPacket.hpp"
-#include "packets/PacketIds.hpp"
-#include "packets/impl/MapMovementPacket.hpp"
-#include "packets/impl/BasicPongPacket.hpp"
-#include "packets/impl/GameContextRemoveElementPacket.hpp"
-#include "packets/impl/NoMovementPacket.hpp"
-#include "packets/impl/MapFightCountPacket.hpp"
-#include "packets/impl/MultiTabStoragePacket.hpp"
-#include "packets/impl/BasicAckPacket.hpp"
 #include "packets/impl/UnknownPacket.hpp"
-#include "packets/impl/BasicPingPacket.hpp"
 #include "packets/factory/PacketFactory.hpp"
 #include "packets/ReceivedPacketNames.hpp"
 #include "packets/SentPacketNames.hpp"
 
-const std::vector<uint16_t> unknown_ids = {
-
-};
-
-bool lastPacketComplete = true;
-std::vector<char> recvGlobalBuffer;
-std::vector<char> sendGlobalBuffer;
 std::ofstream log_file;
 
 using sendFnc = int (WSAAPI *)(SOCKET, const char *, int, int);
@@ -47,13 +28,13 @@ ReturnType PassthroughHook(void *caller, SOCKET socket, char *buffer, int length
 }
 
 int WSAAPI sendHook(SOCKET socket, const char *buffer, int length, int flags) {
-//    if (length <= 5)
-//        return PassthroughHook<int, sendFnc>(sendHook, socket, const_cast<char *>(buffer), length, flags);
     if (length != 65536) {
         std::unique_ptr<IPacket> packet = PacketFactory::make_packet(buffer);
-//        std::cout << "sending " << length << " bytes, header: " << packet->getHeader() << ", id: " << packet->getPacketId() << std::endl;
         std::string packet_dump = packet->dump();
-        std::cout << "sending: " << packet_dump << std::endl;
+        if (!packet_dump.empty()) {
+            std::cout << "sending: " << packet_dump << std::endl;
+            std::cout << "receiving: " << packet_dump << std::endl;
+        }
     } else {
         uint32_t pos = 0;
         uint32_t t_pos;
@@ -81,8 +62,10 @@ int WSAAPI sendHook(SOCKET socket, const char *buffer, int length, int flags) {
             if (looks_valid) {
                 std::unique_ptr<IPacket> packet = PacketFactory::make_packet(&buffer[pos]);
                 std::string packet_dump = packet->dump();
-                if (!packet_dump.empty())
-                    std::cout << "sending: " << packet_dump << std::endl;
+                if (!packet_dump.empty()) {
+                    log_file << "receiving: " << packet_dump << std::endl;
+                    std::cout << "receiving: " << packet_dump << std::endl;
+                }
             }
             pos = t_pos;
         }
@@ -96,8 +79,10 @@ int WSAAPI recvHook(SOCKET socket, char *buffer, int length, int flags) {
     if (length != 65536) {
         std::unique_ptr<IPacket> packet = PacketFactory::make_packet(buffer);
         std::string packet_dump = packet->dump();
-        if (!packet_dump.empty())
+        if (!packet_dump.empty()) {
             std::cout << "receiving: " << packet_dump << std::endl;
+            log_file << "receiving: " << packet_dump << std::endl;
+        }
     } else {
         uint32_t pos = 0;
         uint32_t t_pos;
@@ -125,8 +110,10 @@ int WSAAPI recvHook(SOCKET socket, char *buffer, int length, int flags) {
             if (looks_valid) {
                 std::unique_ptr<IPacket> packet = PacketFactory::make_packet(&buffer[pos]);
                 std::string packet_dump = packet->dump();
-                if (!packet_dump.empty())
+                if (!packet_dump.empty()) {
                     std::cout << "receiving: " << packet_dump << std::endl;
+                    log_file << "receiving: " << packet_dump << std::endl;
+                }
             }
             pos = t_pos;
         }
