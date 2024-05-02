@@ -10,11 +10,11 @@
 
 class UnknownPacket : virtual public APacket {
 public:
-    UnknownPacket(const char *packet);
+    explicit UnknownPacket(const char *packet);
 
     ~UnknownPacket() override = default;
 
-    std::string dump() const override;
+    [[nodiscard]] std::string dump() const override;
     friend std::ostream &operator<<(std::ostream &os, const UnknownPacket &packet);
 
 private:

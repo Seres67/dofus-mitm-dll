@@ -8,7 +8,7 @@ GameContextRemoveElementPacket::GameContextRemoveElementPacket(const char *packe
 
 }
 
-std::ostream &operator<<(std::ostream &os, const GameContextRemoveElementPacket &packet) {
+std::ostream &operator<<(std::ostream &os, [[maybe_unused]] const GameContextRemoveElementPacket &packet) {
     return os << "GameContextRemoveElementPacket{}";
 }
 

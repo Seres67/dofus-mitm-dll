@@ -14,7 +14,7 @@ public:
     explicit ObjectEffect(uint16_t effect_id);
 
 private:
-    uint16_t m_effect_id;
+    [[maybe_unused]] uint16_t m_effect_id;
 };
 
 

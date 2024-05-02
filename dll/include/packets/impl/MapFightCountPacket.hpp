@@ -14,7 +14,7 @@ public:
 
     ~MapFightCountPacket() override = default;
 
-    std::string dump() const override;
+    [[nodiscard]] std::string dump() const override;
 
     friend std::ostream &operator<<(std::ostream &os, const MapFightCountPacket &packet);
 

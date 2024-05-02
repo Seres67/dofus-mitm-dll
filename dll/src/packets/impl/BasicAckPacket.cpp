@@ -9,7 +9,7 @@ BasicAckPacket::BasicAckPacket(const char *packet) : APacket(packet) {
 
 }
 
-std::ostream &operator<<(std::ostream &os, const BasicAckPacket &packet) {
+std::ostream &operator<<(std::ostream &os, [[maybe_unused]] const BasicAckPacket &packet) {
     return os << "BasicAckPacket{}";
 }
 

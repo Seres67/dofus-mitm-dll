@@ -8,7 +8,7 @@ NoMovementPacket::NoMovementPacket(const char *packet) : APacket(packet) {
 
 }
 
-std::ostream &operator<<(std::ostream &os, const NoMovementPacket &packet) {
+std::ostream &operator<<(std::ostream &os, [[maybe_unused]] const NoMovementPacket &packet) {
     return os << "NoMovementPacket{}";
 }
 

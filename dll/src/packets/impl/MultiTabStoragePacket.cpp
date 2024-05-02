@@ -8,7 +8,7 @@ MultiTabStoragePacket::MultiTabStoragePacket(const char *packet) : APacket(packe
 
 }
 
-std::ostream &operator<<(std::ostream &os, const MultiTabStoragePacket &packet) {
+std::ostream &operator<<(std::ostream &os, [[maybe_unused]] const MultiTabStoragePacket &packet) {
     return os << "MultiTabStoragePacket{}";
 }
 

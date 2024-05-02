@@ -18,7 +18,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const ChatMessagePacket &packet);
 
-    std::string dump() const override;
+    [[nodiscard]] std::string dump() const override;
 
 private:
     uint16_t m_packet_id = 1304;

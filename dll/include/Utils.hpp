@@ -11,12 +11,13 @@
 
 class Utils {
 public:
-    static uint64_t readVarULong(const char *buffer, std::size_t &pos);
+    [[maybe_unused]] static uint64_t readVarULong(const char *buffer, std::size_t &pos);
     static uint32_t readVarUInt(const char *buffer, std::size_t &pos);
-    static uint16_t readVarUShort(const char *buffer, std::size_t &pos);
+
+    [[maybe_unused]] static uint16_t readVarUShort(const char *buffer, std::size_t &pos);
 
     template<typename T>
-    static T swap_endian(T u);
+    [[maybe_unused]] static T swap_endian(T u);
 };
 
 

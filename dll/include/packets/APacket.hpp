@@ -31,27 +31,27 @@ public:
 
     ~APacket() override = default;
 
-    uint16_t getPacketId() const override {
+    [[nodiscard]] uint16_t getPacketId() const override {
         return m_packet_id;
     }
 
-    uint32_t getLength() const override {
+    [[nodiscard]] uint32_t getLength() const override {
         return m_length;
     }
 
-    uint8_t getLengthType() const override {
+    [[nodiscard]] uint8_t getLengthType() const override {
         return m_length_type;
     }
 
-    uint64_t getPos() const override {
+    [[nodiscard]] uint64_t getPos() const override {
         return m_pos;
     }
 
-    std::string dump() const override {
+    [[nodiscard]] std::string dump() const override {
         return "APacket{}";
     }
 
-    uint16_t getHeader() const override {
+    [[nodiscard]] uint16_t getHeader() const override {
         return m_header;
     }
 protected:

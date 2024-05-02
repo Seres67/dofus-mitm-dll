@@ -11,19 +11,19 @@
 
 class IPacket {
 public:
-    virtual ~IPacket(){};
+    virtual ~IPacket()= default;
 
-    virtual uint16_t getPacketId() const = 0;
+    [[nodiscard]] virtual uint16_t getPacketId() const = 0;
 
-    virtual uint32_t getLength() const = 0;
+    [[nodiscard]] virtual uint32_t getLength() const = 0;
 
-    virtual uint8_t getLengthType() const = 0;
+    [[maybe_unused]] [[nodiscard]] virtual uint8_t getLengthType() const = 0;
 
-    virtual uint64_t getPos() const = 0;
+    [[maybe_unused]] [[nodiscard]] virtual uint64_t getPos() const = 0;
 
-    virtual std::string dump() const = 0;
+    [[nodiscard]] virtual std::string dump() const = 0;
 
-    virtual uint16_t getHeader() const = 0;
+    [[nodiscard]] virtual uint16_t getHeader() const = 0;
 };
 
 

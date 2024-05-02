@@ -5,7 +5,7 @@
 #include <iostream>
 #include "Utils.hpp"
 
-uint64_t Utils::readVarULong(const char *buffer, std::size_t &pos) {
+[[maybe_unused]] uint64_t Utils::readVarULong(const char *buffer, std::size_t &pos) {
     uint64_t out = 0;
     int i = 0;
     for (; i < 8; ++i) {
@@ -23,7 +23,7 @@ uint64_t Utils::readVarULong(const char *buffer, std::size_t &pos) {
     return out;
 }
 
-uint16_t Utils::readVarUShort(const char *buffer, std::size_t &pos) {
+[[maybe_unused]] uint16_t Utils::readVarUShort(const char *buffer, std::size_t &pos) {
     uint16_t out = 0;
     int i = 0;
     for (; i < 2; ++i) {
@@ -62,7 +62,7 @@ uint32_t Utils::readVarUInt(const char *buffer, std::size_t &pos) {
 #include <climits>
 
 template<typename T>
-T Utils::swap_endian(T u) {
+[[maybe_unused]] T Utils::swap_endian(T u) {
     static_assert(CHAR_BIT == 8, "CHAR_BIT != 8");
 
     union {

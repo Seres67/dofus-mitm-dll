@@ -8,7 +8,7 @@ MapFightCountPacket::MapFightCountPacket(const char *packet) : APacket(packet) {
 
 }
 
-std::ostream &operator<<(std::ostream &os, const MapFightCountPacket &packet) {
+std::ostream &operator<<(std::ostream &os, [[maybe_unused]] const MapFightCountPacket &packet) {
     return os << "MapFightCountPacket{}";
 }
 

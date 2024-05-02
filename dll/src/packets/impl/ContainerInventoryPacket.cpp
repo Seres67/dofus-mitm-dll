@@ -7,6 +7,6 @@ ContainerInventoryPacket::ContainerInventoryPacket(const char *packet) : APacket
 
 }
 
-std::ostream &operator<<(std::ostream &os, const ContainerInventoryPacket &packet) {
+std::ostream &operator<<(std::ostream &os, [[maybe_unused]] const ContainerInventoryPacket &packet) {
     return os << "ContainerInventoryPacket{}";
 }
